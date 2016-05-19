@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Movie Rating</title>
+	<script src="js/angular.min.js"></script>
+    <script src="js/controller.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="main" ng-controller = "MyController">
+    <div class="search">
+        <h1>Search Movie</h1>
+        <label>search: </label>
+        <input ng-model="query" placeholder="Search for Movies" autofocus>
+    </div>
+  <div class="" ng-repeat="cate in getCategories()">
+  	<h2>{{cate}} ({{(movielists | filter:{category:cate} | filter:query).length}})</h2>
+  	<div ng-repeat="item in movielists | filter:{category:cate} | filter:query">
+  <div class="star-ratings-sprite">
+  <span style="width:{{item.rating*10}}%" class="star-ratings-sprite-rating"></span>
+  </div>
+  	   	<a href="http://www.imdb.com/find?q={{item.title}}">{{item.title}}</a>
+  	</div>
+  </div>
+</div>
+	
+</body>
+</html>
